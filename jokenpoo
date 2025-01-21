@@ -2,23 +2,26 @@ import random
 
 def jogar_jokenpo():
     opcoes = ["pedra", "papel", "tesoura"]
-    jogada_jogador = input("Faça sua jogada (pedra, papel ou tesoura): ").lower()
+    
+    while True:
+        jogada_jogador = input("Faça sua jogada (pedra, papel ou tesoura): ").lower()
+        while jogada_jogador not in opcoes:
+            jogada_jogador = input("Jogada inválida! Tente novamente (pedra, papel ou tesoura): ").lower()
 
-    if jogada_jogador not in opcoes:
-        print("Jogada inválida! Tente novamente.")
-        return
+        jogada_computador = random.choice(opcoes)
+        print(f"Computador jogou: {jogada_computador}")
 
-    jogada_computador = random.choice(opcoes)
-    print(f"Computador jogou: {jogada_computador}")
+        if jogada_jogador == jogada_computador:
+            print("Empate!")
+        elif (jogada_jogador == "pedra" and jogada_computador == "tesoura") or \
+             (jogada_jogador == "papel" and jogada_computador == "pedra") or \
+             (jogada_jogador == "tesoura" and jogada_computador == "papel"):
+            print("Você venceu!")
+        else:
+            print("Você perdeu!")
 
-    if jogada_jogador == jogada_computador:
-        print("Empate!")
-    elif (jogada_jogador == "pedra" and jogada_computador == "tesoura") or \
-         (jogada_jogador == "papel" and jogada_computador == "pedra") or \
-         (jogada_jogador == "tesoura" and jogada_computador == "papel"):
-        print("Você venceu!")
-    else:
-        print("Você perdeu!")
+        if input("Deseja jogar novamente? (sim/nao): ").lower() != 'sim':
+            break
 
 if __name__ == "__main__":
     jogar_jokenpo()
