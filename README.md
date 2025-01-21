@@ -1,2 +1,2 @@
-# mateuscod
-jokenpoo
+# Codigo Aula
+Jogo de jokenpoo
